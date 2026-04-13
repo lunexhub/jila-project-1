@@ -34,27 +34,25 @@ const Contact = () => {
           <div className="space-y-8">
             <h2 className="font-display text-2xl font-bold text-foreground">Contact Information</h2>
             <div className="space-y-6">
-              {[
-                { icon: Mail, label: "Email", value: "info@jilaservices.co.za", href: "mailto:info@jilaservices.co.za" },
-                { icon: Phone, label: "Phone", value: "+27 (0) 00 000 0000", href: "tel:+27000000000" },
-                { icon: MapPin, label: "Location", value: "32 Fricker Road, Illovo, Sandton" },
-              ].map((item) => (
-                <div key={item.label} className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                    <item.icon size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">{item.label}</p>
-                    {item.href ? (
-                      <a href={item.href} className="font-medium text-foreground hover:text-primary transition-colors">
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="font-medium text-foreground">{item.value}</p>
-                    )}
-                  </div>
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <Mail size={20} className="text-primary" />
                 </div>
-              ))}
+                <div>
+                  <p className="text-sm text-muted-foreground">Email</p>
+                  <a href="mailto:info@jilaservices.co.za" className="block font-medium text-foreground hover:text-primary transition-colors">info@jilaservices.co.za</a>
+                  <a href="mailto:sales@jilaservices.co.za" className="block font-medium text-foreground hover:text-primary transition-colors">sales@jilaservices.co.za</a>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                  <MapPin size={20} className="text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Location</p>
+                  <p className="font-medium text-foreground">32 Fricker Road, Illovo, Sandton</p>
+                </div>
+              </div>
             </div>
 
             <div className="rounded-lg border border-border bg-card-gradient p-6">

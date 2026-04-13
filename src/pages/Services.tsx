@@ -48,26 +48,24 @@ const Services = () => {
       </HeroSection>
 
       <section className="container py-16 sm:py-24">
-        <div className="space-y-12 sm:space-y-16">
-          {servicesData.map((service, idx) => (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {servicesData.map((service) => (
             <div
               key={service.title}
-              className={`flex flex-col items-start gap-10 lg:flex-row ${idx % 2 !== 0 ? "lg:flex-row-reverse" : ""}`}
+              className="rounded-2xl bg-secondary border border-border p-8 space-y-5"
             >
-              <div className="flex h-32 sm:h-48 w-full items-center justify-center rounded-lg border border-border bg-card-gradient lg:w-1/3">
-                <service.icon className="h-14 w-14 sm:h-20 sm:w-20 text-primary" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                <service.icon className="h-6 w-6 text-primary" />
               </div>
-              <div className="flex-1 space-y-4">
-                <h2 className="font-display text-2xl font-bold text-foreground">{service.title}</h2>
-                <ul className="grid gap-3 sm:grid-cols-2">
-                  {service.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <h2 className="font-display text-xl font-bold text-foreground">{service.title}</h2>
+              <ul className="space-y-2">
+                {service.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

@@ -8,24 +8,67 @@ const packages = [
     name: "Compliance",
     price: "R2,999",
     period: "/month",
-    description: "Essential compliance services for small businesses.",
-    features: ["Bookkeeping", "VAT Returns", "SARS Compliance", "Monthly Reporting", "Email Support"],
+    description: "Essential compliance Accounting, Taxation and Human Resources services for non-VAT registered small businesses.",
+    featureGroups: [
+      {
+        label: "Accounting & Tax",
+        shade: "primary",
+        items: ["Bank reconciliations", "SARS Compliance", "CIPC Compliance", "Quarterly management accounts", "Annual Financial Statements", "Payroll add on option (incl EMP returns and IRP5)"],
+      },
+      {
+        label: "Human Resources",
+        shade: "blue",
+        items: ["Employee Onboarding", "EE Reporting basic", "Leave management"],
+      },
+    ],
     popular: false,
   },
   {
     name: "Standard",
     price: "R7,000",
     period: "/month",
-    description: "Comprehensive accounting and tax management for growing businesses.",
-    features: ["Everything in Compliance", "Management Accounts", "Payroll (up to 10 employees)", "Tax Returns", "CIPC Annual Returns", "Dedicated Account Manager"],
-    popular: true,
+    description: "Comprehensive Accounting, Taxation and Human Resources management for growing VAT registered businesses.",
+    featureGroups: [
+      {
+        label: "Everything in Compliance",
+        shade: "neutral",
+        items: [],
+      },
+      {
+        label: "Accounting & Tax",
+        shade: "primary",
+        items: ["Supplier processing", "Monthly Management Accounts and Reporting", "VAT returns"],
+      },
+      {
+        label: "Human Resources",
+        shade: "blue",
+        items: ["Hearings facilitation", "Statutory reporting reviews", "Compliance training"],
+      },
+    ],
+    popular: false,
   },
   {
     name: "Premium",
     price: "R15,000",
     period: "/month",
-    description: "Full-service business support for established enterprises.",
-    features: ["Everything in Standard", "Full Payroll Management", "HR Services", "Cashflow Forecasting", "Budgeting", "Priority Support", "Quarterly Business Reviews"],
+    description: "Full-suite service support for medium to large enterprises.",
+    featureGroups: [
+      {
+        label: "Everything in Standard",
+        shade: "neutral",
+        items: [],
+      },
+      {
+        label: "Accounting & Tax",
+        shade: "primary",
+        items: ["Priority support", "Advisory hours across all disciplines", "Budgeting, Cashflow and Forecasting"],
+      },
+      {
+        label: "Human Resources",
+        shade: "blue",
+        items: ["Industrial Relations", "Training and certification"],
+      },
+    ],
     popular: false,
   },
 ];
@@ -64,18 +107,43 @@ const Pricing = () => {
                 </span>
               )}
               <h3 className="font-display text-xl font-bold text-foreground">{pkg.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{pkg.description}</p>
+              <p className="mt-2 text-sm text-muted-foreground min-h-[3.5rem]">{pkg.description}</p>
               <div className="mt-6">
-                <span className="font-display text-4xl font-bold text-foreground">{pkg.price}</span>
-                <span className="text-muted-foreground">{pkg.period}</span>
+                <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">From</span>
+                <div>
+                  <span className="font-display text-4xl font-bold text-foreground">{pkg.price}</span>
+                  <span className="text-muted-foreground">{pkg.period}</span>
+                </div>
               </div>
-              <ul className="mt-8 flex-1 space-y-3">
-                {pkg.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Check size={16} className="shrink-0 text-primary" /> {feature}
-                  </li>
+              <div className="mt-8 flex-1 space-y-4">
+                {pkg.featureGroups.map((group) => (
+                  <div
+                    key={group.label}
+                    className={`rounded-lg p-4 ${
+                      group.shade === 'primary'
+                        ? 'bg-primary/10 border border-primary/20'
+                        : group.shade === 'blue'
+                        ? 'bg-blue-900/20 border border-blue-400/20'
+                        : 'bg-border/40 border border-border'
+                    }`}
+                  >
+                    <p className={`text-xs font-bold uppercase tracking-wider ${
+                      group.shade === 'primary' ? 'text-primary' : group.shade === 'blue' ? 'text-blue-400' : 'text-muted-foreground'
+                    } ${group.items.length > 0 ? 'mb-2' : ''}`}>{group.label}</p>
+                    {group.items.length > 0 && (
+                      <ul className="space-y-2">
+                        {group.items.map((item) => (
+                          <li key={item} className="flex items-start gap-2 text-xs text-muted-foreground">
+                            <Check size={14} className={`mt-0.5 shrink-0 ${
+                              group.shade === 'primary' ? 'text-primary' : 'text-blue-400'
+                            }`} /> {item}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 ))}
-              </ul>
+              </div>
               <Link
                 to="/contact"
                 className={`mt-8 inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-semibold transition-all ${

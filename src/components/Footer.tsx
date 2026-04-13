@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import logo from "@/assets/Untitled design (2).png";
 
 const Footer = () => {
@@ -9,21 +9,21 @@ const Footer = () => {
         <div className="grid gap-8 sm:gap-12 sm:grid-cols-2 md:grid-cols-3">
           <div className="space-y-4">
             <Link to="/">
-              <img src={logo} alt="JILA Business Services" className="h-14 w-auto" />
+              <img src={logo} alt="JILA Business Services" className="h-16 w-auto" />
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-sm text-white leading-relaxed">
               Your SME service partner
             </p>
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-display text-sm font-semibold text-foreground">Quick Links</h4>
+            <h4 className="font-display text-sm font-bold text-white">Quick Links</h4>
             <div className="flex flex-col gap-2">
-              {["Services", "Pricing", "About", "Contact"].map((item) => (
+              {["Services", "Pricing", "Contact"].map((item) => (
                 <Link
                   key={item}
                   to={`/${item.toLowerCase()}`}
-                  className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                  className="text-sm text-white transition-colors hover:text-primary"
                 >
                   {item}
                 </Link>
@@ -32,13 +32,13 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h4 className="font-display text-sm font-semibold text-foreground">Contact</h4>
-            <div className="flex flex-col gap-3 text-sm text-muted-foreground">
+            <h4 className="font-display text-sm font-bold text-white">Contact</h4>
+            <div className="flex flex-col gap-3 text-sm text-white">
               <a href="mailto:info@jilaservices.co.za" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Mail size={14} className="text-primary" /> info@jilaservices.co.za
               </a>
-              <a href="tel:+27000000000" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Phone size={14} className="text-primary" /> +27 (0) 00 000 0000
+              <a href="mailto:sales@jilaservices.co.za" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Mail size={14} className="text-primary" /> sales@jilaservices.co.za
               </a>
               <span className="flex items-center gap-2">
                 <MapPin size={14} className="text-primary shrink-0" /> 32 Fricker Road, Illovo, Sandton
@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground space-y-2">
+        <div className="mt-12 border-t border-border pt-8 text-center text-sm text-white space-y-2">
           <p>© {new Date().getFullYear()} JILA Business Services. All rights reserved.</p>
           <p>
             Built by{" "}

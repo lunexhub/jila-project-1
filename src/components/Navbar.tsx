@@ -7,7 +7,6 @@ const navItems = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
   { label: "Pricing", path: "/pricing" },
-  { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
 ];
 
@@ -19,7 +18,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
       <div className="container flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="JILA Business Services" className="h-16 sm:h-18 w-auto" />
+          <img src={logo} alt="JILA Business Services" className="h-16 sm:h-20 w-auto" />
         </Link>
 
         {/* Desktop */}
