@@ -25,7 +25,7 @@ const packages = [
   },
   {
     name: "Standard",
-    price: "R7,000",
+    price: "R6,999",
     period: "/month",
     description: "Comprehensive Accounting, Taxation and Human Resources management for growing VAT registered businesses.",
     featureGroups: [
@@ -49,7 +49,7 @@ const packages = [
   },
   {
     name: "Premium",
-    price: "R15,000",
+    price: "R14,999",
     period: "/month",
     description: "Full-suite service support for medium to large enterprises.",
     featureGroups: [
