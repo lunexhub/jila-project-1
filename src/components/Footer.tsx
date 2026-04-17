@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin } from "lucide-react";
-import logo from "@/assets/Untitled design (2).png";
 
 const Footer = () => {
   return (
@@ -8,10 +7,7 @@ const Footer = () => {
       <div className="container py-10 sm:py-16">
         <div className="grid gap-8 sm:gap-12 sm:grid-cols-2 md:grid-cols-3">
           <div className="space-y-4">
-            <Link to="/">
-              <img src={logo} alt="JILA Business Services" className="h-16 w-auto" />
-            </Link>
-            <p className="text-sm text-white leading-relaxed">
+            <p className="text-base font-extrabold text-white leading-relaxed">
               Your SME service partner
             </p>
           </div>

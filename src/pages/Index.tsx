@@ -147,13 +147,6 @@ const Index = () => {
           <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
             Let us handle the numbers while you focus on what matters most — growing your business.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-            {["SARS Compliant", "Trusted by 500+ Clients", "End-to-End Solutions"].map((item) => (
-              <span key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle size={16} className="text-primary" /> {item}
-              </span>
-            ))}
-          </div>
           <Link
             to="/contact"
             className="mt-8 inline-flex items-center gap-2 rounded-md bg-primary px-8 py-3.5 font-semibold text-primary-foreground transition-all hover:opacity-90"

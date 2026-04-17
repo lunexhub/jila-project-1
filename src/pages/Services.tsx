@@ -48,11 +48,11 @@ const Services = () => {
       </HeroSection>
 
       <section className="container py-16 sm:py-24">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="flex flex-wrap justify-center gap-6">
           {servicesData.map((service) => (
             <div
               key={service.title}
-              className="rounded-2xl bg-secondary border border-border p-8 space-y-5"
+              className="rounded-2xl bg-secondary border border-border p-8 space-y-5 w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
                 <service.icon className="h-6 w-6 text-primary" />
