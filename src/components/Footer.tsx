@@ -7,7 +7,8 @@ const Footer = () => {
       <div className="container py-10 sm:py-16">
         <div className="grid gap-8 sm:gap-12 sm:grid-cols-2 md:grid-cols-3">
           <div className="space-y-4">
-            <p className="text-base font-extrabold text-white leading-relaxed">
+            <p className="text-sm font-bold text-white opacity-0 select-none">.</p>
+            <p className="text-2xl font-black text-white leading-snug tracking-tight">
               Your SME service partner
             </p>
           </div>
