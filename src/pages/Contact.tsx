@@ -6,10 +6,31 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+
+    const data = new FormData(e.target as HTMLFormElement);
+    data.append("access_key", "85860466-3194-477b-adc9-1bb86fabb4fb");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: data,
+    });
+
+    const result = await response.json();
+    setSending(false);
+
+    if (result.success) {
+      setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } else {
+      setError("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -90,6 +111,7 @@ const Contact = () => {
                       id={field.id}
                       type={field.type}
                       required
+                      name={field.id}
                       placeholder={field.placeholder}
                       value={formData[field.id as keyof typeof formData]}
                       onChange={(e) => setFormData({ ...formData, [field.id]: e.target.value })}
@@ -103,6 +125,7 @@ const Contact = () => {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={4}
                     required
                     placeholder="How can we help?"
@@ -111,11 +134,13 @@ const Contact = () => {
                     className="w-full rounded-md border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
+                {error && <p className="text-sm text-red-500">{error}</p>}
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground transition-all hover:opacity-90"
+                  disabled={sending}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 font-semibold text-primary-foreground transition-all hover:opacity-90 disabled:opacity-60"
                 >
-                  Send Message <Send size={16} />
+                  {sending ? "Sending..." : <> Send Message <Send size={16} /> </>}
                 </button>
               </form>
             )}
